@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import { toastr } from "react-redux-toastr";
 import { setFavoritePokemonType } from "../../actions/trainerActions";
 import BackIconButton from "../common/BackIconButton";
 import QuestionText from "../common/QuestionText";
@@ -19,12 +20,16 @@ function TranerName() {
   const openModal = () => setModalIsVisible(true);
   const closeModal = () => setModalIsVisible(false);
 
-  const goToPokedexScreen = () => {
-    dispatch(setFavoritePokemonType(pokemonType));
-    history.push("/pokedex");
+  const onClickNext = () => {
+    if (pokemonType) {
+      dispatch(setFavoritePokemonType(pokemonType));
+      history.push("/pokedex");
+    } else {
+      toastr.error("Select a Pokémon type.");
+    }
   };
 
-  const goToTrainerNameScreen = () => {
+  const onClickBack = () => {
     history.push("/trainer-name");
   };
 
@@ -48,7 +53,7 @@ function TranerName() {
     <div className="page bg-image column">
       <div className="grow column content">
         <BackIconButton
-          onClick={goToTrainerNameScreen}
+          onClick={onClickBack}
           className="back-icon-button-position"
         />
         <QuestionText
@@ -73,7 +78,7 @@ function TranerName() {
         />
         <div className="column grow align-center justify-end">
           <NextIconButton
-            onClick={goToPokedexScreen}
+            onClick={onClickNext}
             className="next-icon-button-position"
           />
         </div>

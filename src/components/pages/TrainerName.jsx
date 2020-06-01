@@ -2,6 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 // eslint-disable-next-line no-unused-vars
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import { toastr } from "react-redux-toastr";
 import { setName } from "../../actions/trainerActions";
 import QuestionText from "../common/QuestionText";
 import PhraseText from "../common/PhraseText";
@@ -16,9 +17,13 @@ function TranerName() {
     useSelector((store) => store.trainerState.name)
   );
 
-  const goToFavoritePokemonType = () => {
-    dispatch(setName(trainerName));
-    history.push("/favorite-pokemon-type");
+  const onClickNext = () => {
+    if (trainerName) {
+      dispatch(setName(trainerName));
+      history.push("/favorite-pokemon-type");
+    } else {
+      toastr.error("Trainer name can't be empty.");
+    }
   };
 
   // // will redirect to Home on page reload
@@ -50,7 +55,7 @@ function TranerName() {
         />
         <div className="column grow align-center justify-end">
           <NextIconButton
-            onClick={goToFavoritePokemonType}
+            onClick={onClickNext}
             className="next-icon-button-position"
           />
         </div>

@@ -6,11 +6,6 @@ $screenWidth: 414;
 
 $grayText: #929292;
 
-@function get-vw($target) { 
-  $vw-context: (1000*.01) * 1;
-  @return ($target/$vw-context) * 1;
-}
-
 // ### COMMON COMPONENTS ###
 
 // pages
@@ -94,7 +89,6 @@ $grayText: #929292;
 
 // TypeSelect component
 .type-select{
-    // background-color: rgba($color: #000000, $alpha: 0.0) !important;
     height: 45px;
     border-bottom: 4px solid white;
     color: white !important;
@@ -105,6 +99,7 @@ $grayText: #929292;
 .type-select-text{
     color: white !important;
     font-size: 1.3rem !important;
+    text-transform: capitalize;
 }
 .type-select-arrow{
     transform: rotate(180deg);
@@ -118,8 +113,7 @@ $grayText: #929292;
 
 // TypeSelectModal component
 .type-select-modal{
-    // width: #{$screenWidth}px;
-    // font-size: 1.3rem !important;
+    text-transform: capitalize;
 }
 .type-select-modal-position{
     // position: absolute !important;
@@ -128,8 +122,6 @@ $grayText: #929292;
     flex-flow: column nowrap;
     justify-content: flex-end;
     padding-bottom: #{$screenWidth * 0.01}px !important;
-    // left: #{50 - get-vw($screenWidth/2)}px;
-    // bottom: #{$screenHeight * 0}px !important;
     width: #{$screenWidth*0.98}px !important;
     height: #{$screenHeight}px !important;
 }
@@ -139,10 +131,8 @@ $grayText: #929292;
 .type-select-modal-position .ant-modal-content{
     overflow-y: scroll !important;
     max-height: #{$screenHeight - $screenWidth * 0.02}px !important;
-    // width: #{$screenWidth*0.98}px !important;
 }
 .type-select-modal-list{
-    // width: #{$screenWidth}px;
     font-size: 1.3rem !important;
     color: black !important;
 }
@@ -212,7 +202,6 @@ $grayText: #929292;
 }
 .type-scroller-image{
     width: #{$screenWidth * 0.21}px !important;
-    // border-collapse: ;
 }
 .type-scroller-text{
     font-size: 1.3rem;
@@ -250,10 +239,8 @@ $grayText: #929292;
     font-size: 1.1rem;
 }
 .pokemon-list-image{
-    // background-color: blue;
     border-radius: 50%;
     width: #{$screenWidth * 0.115}px;
-    // margin-left: #{$screenWidth * 0.04}px;
 }
 .pokemon-list::-webkit-scrollbar {
     width: 3px !important;
@@ -296,7 +283,4 @@ $grayText: #929292;
 }
 .cursor-pointer{
     cursor: pointer;
-}
-.block{
-    display: block;
 }
