@@ -1,7 +1,12 @@
 import React from "react";
-import { Typography } from "antd";
+import { Modal, List } from "antd";
+import radioOffIcon from "../../assets/radio-off.png";
+import radioOnIcon from "../../assets/radio-on.png";
+import closeIcon from "../../assets/close.png";
 
-function TypeScroller({ onChange, value, className = "", ...props }) {
+// import pokemonTypeApi from "../../api/pokemonTypeApi";
+
+function PhraseText({ onChange, value, className = "", ...props }) {
   // eslint-disable-next-line no-unused-vars
   const [typeList, setTypeList] = React.useState([
     {
@@ -96,29 +101,67 @@ function TypeScroller({ onChange, value, className = "", ...props }) {
     },
   ]);
 
+  const [selectedValue, setSelectedValue] = React.useState(value);
+
   // React.useEffect(
   //   () => pokemonTypeApi.list().then((response) => setTypeList(response)),
   //   []
   // );
 
+  React.useEffect(() => setSelectedValue(value), [value]);
+
+  const onOk = () => {
+    onChange(selectedValue);
+    props.onCancel();
+  };
+
   return (
-    <div className={`type-scroller row ${className}`} {...props}>
-      {typeList.map((type) => (
-        <div
-          className="type-scroller-item column align-center"
-          key={type.name}
-          {...props}
-        >
-          <img
-            src={type.thumbnailImage}
-            alt={type.name}
-            className="type-scroller-image"
-          />
-          <Typography className="type-scroller-text">{type.name}</Typography>
-        </div>
-      ))}
-    </div>
+    <Modal
+      cancelButtonProps={{ style: { display: "none" } }}
+      okButtonProps={{
+        block: true,
+        size: "large",
+        type: "primary",
+        className: "large-button",
+      }}
+      okText="Confirm"
+      onOk={onOk}
+      closable={false}
+      className={`type-select-modal ${className}`}
+      {...props}
+    >
+      <List
+        className="type-select-modal-list"
+        itemLayout="horizontal"
+        dataSource={typeList}
+        size="large"
+        header={
+          <div className="row justify-between align-center">
+            <div>Select your favorite pokémon type</div>
+            <img src={closeIcon} alt="close" />
+          </div>
+        }
+        renderItem={(item) => (
+          <List.Item
+            key={item.name}
+            actions={[
+              // eslint-disable-next-line
+              <img
+                key={`${item.name}-checkbox`}
+                src={item.name === selectedValue ? radioOnIcon : radioOffIcon}
+                id={item.name}
+                alt="type checkbox"
+                onClick={(evt) => setSelectedValue(evt.target.id)}
+              />,
+            ]}
+          >
+            <img src={item.thumbnailImage} alt={item.name} />
+            {item.name}
+          </List.Item>
+        )}
+      />
+    </Modal>
   );
 }
 
-export default TypeScroller;
+export default PhraseText;

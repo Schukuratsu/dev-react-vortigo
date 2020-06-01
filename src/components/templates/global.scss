@@ -1,0 +1,302 @@
+// this file is imported in '/src/index.js', don't import it in other files
+
+// ### HELPERS ###
+$screenHeight: 736;
+$screenWidth: 414;
+
+$grayText: #929292;
+
+@function get-vw($target) { 
+  $vw-context: (1000*.01) * 1;
+  @return ($target/$vw-context) * 1;
+}
+
+// ### COMMON COMPONENTS ###
+
+// pages
+.page{
+    margin: 0 auto;
+    width: $screenWidth + px;
+    height: $screenHeight + px;
+}
+.bg-image{
+    background-image: url('../../assets/bg.png');
+}
+.bg-white{
+    background-color: white;
+}
+.content{
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+// Home component
+.pikachu-background{
+    background-image: url('../../assets/pikachu.png');
+    background-repeat: no-repeat;
+    background-position: bottom right;
+}
+
+
+// TitleImage component
+.title-image{
+    padding-top: 12%;
+}
+.finder-image{
+    margin-top: -5px;
+}
+
+// LargeButton component
+.large-button{
+    height: 50px !important;
+    font-size: 1.5rem !important;
+    border-radius: 8px !important;
+    background-color: #f24f76 !important;
+    border: 0px !important;
+}
+
+// QuestionText component
+.question-text{
+    font-size: 1.7rem !important;
+    color: white !important;
+}
+.question-text-spacing{
+    position: absolute;
+    top: #{$screenHeight * 0.15}px;
+}
+
+// PhraseText component
+.phrase-text{
+    font-size: 1.5rem !important;
+    color: white !important;
+}
+.phrase-text-spacing{
+    position: absolute;
+    top: #{$screenHeight * 0.37}px;
+    max-width: #{$screenWidth * 0.8}px;
+}
+
+// NameInput component
+.name-input{
+    background-color: rgba($color: #000000, $alpha: 0.0) !important;
+    border-width: 0px 0px 4px 0px !important;
+    border-color: white !important;
+    color: white !important;
+    font-size: 1.3rem !important;
+}
+.name-input.ant-input:hover, .name-input.ant-input:focus{
+    border-right-width: 0px !important;
+}
+.name-input-position{
+    position: absolute;
+    top: #{$screenHeight * 0.50}px;
+}
+
+// TypeSelect component
+.type-select{
+    // background-color: rgba($color: #000000, $alpha: 0.0) !important;
+    height: 45px;
+    border-bottom: 4px solid white;
+    color: white !important;
+    font-size: 1.3rem !important;
+    padding: 0px 10.7px;
+    cursor: pointer;
+}
+.type-select-text{
+    color: white !important;
+    font-size: 1.3rem !important;
+}
+.type-select-arrow{
+    transform: rotate(180deg);
+    filter: brightness(0) invert(1);
+}
+.type-select-position{
+    position: absolute;
+    top: #{$screenHeight * 0.5}px;
+    width: #{$screenWidth * 0.8}px;
+}
+
+// TypeSelectModal component
+.type-select-modal{
+    // width: #{$screenWidth}px;
+    // font-size: 1.3rem !important;
+}
+.type-select-modal-position{
+    // position: absolute !important;
+    top: unset !important;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-end;
+    padding-bottom: #{$screenWidth * 0.01}px !important;
+    // left: #{50 - get-vw($screenWidth/2)}px;
+    // bottom: #{$screenHeight * 0}px !important;
+    width: #{$screenWidth*0.98}px !important;
+    height: #{$screenHeight}px !important;
+}
+.ant-modal-footer button + button{
+    margin-left: 0px !important;
+}
+.type-select-modal-position .ant-modal-content{
+    overflow-y: scroll !important;
+    max-height: #{$screenHeight - $screenWidth * 0.02}px !important;
+    // width: #{$screenWidth*0.98}px !important;
+}
+.type-select-modal-list{
+    // width: #{$screenWidth}px;
+    font-size: 1.3rem !important;
+    color: black !important;
+}
+
+// NextIconButton component
+.next-icon-button{
+    padding: #{$screenWidth * 0.03}px;
+}
+.next-icon-button:hover{
+    transition: box-shadow 0.2s;
+    box-shadow: 0 0 0 1px rgba($color: white, $alpha: 0.5);
+    border-radius: 50%;
+}
+.next-icon-button-position{
+    position: absolute;
+    top: #{$screenHeight * 0.85}px;
+}
+
+// BackIconButton component
+.back-icon-button{
+    padding: 10px;
+    transform: rotate(-90deg);
+    filter: brightness(0) invert(1);
+}
+.back-icon-button:hover{
+    transition: box-shadow 0.2s;
+    box-shadow: 0 0 0 1px rgba($color: white, $alpha: 0.5);
+    border-radius: 50%;
+}
+.back-icon-button-position{
+    position: absolute;
+    top: 20px;
+}
+
+// SearchBar component
+.search-bar{
+    display: flex;
+    padding: 2px;
+    justify-content: stretch;
+    align-items: flex-end;
+    color: white !important;
+    font-size: 1.3rem;
+    min-height: #{$screenHeight * 0.11}px;
+    background-color: #41c7a2;
+    font-weight: bold;
+}
+.search-bar{
+    padding: 5px 10px;
+}
+.search-bar .ant-input-search{
+    height: #{$screenHeight * 0.07}px !important;
+}
+.search-bar .ant-input-search, .search-bar .ant-input{
+    background-color: #f0f0f0;
+}
+
+// TypeScroller component
+.type-scroller{
+    width: #{$screenWidth}px !important;
+    overflow-x: overlay !important;
+    min-height: fit-content !important;
+    padding-left: #{$screenWidth * 0.05}px;
+    padding-bottom: 8px;
+}
+.type-scroller-item{
+    margin-right: #{$screenWidth * 0.05}px;
+}
+.type-scroller-image{
+    width: #{$screenWidth * 0.21}px !important;
+    // border-collapse: ;
+}
+.type-scroller-text{
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+.type-scroller::-webkit-scrollbar {
+    height: 0px !important;
+
+}
+.type-scroller:hover::-webkit-scrollbar {
+    height: 8px !important;
+}
+.type-scroller-position{
+    width: #{$screenWidth}px !important;
+    overflow-x: overlay !important;
+    padding-top: #{$screenWidth * 0.07}px;
+}
+
+// TypeScroller component
+.pokemon-list{
+    overflow-y: overlay !important;
+    padding-right: 8px !important;
+}
+.pokemon-list table{
+    text-align: center;
+    border-collapse: separate;
+    border-spacing: 0px #{$screenWidth * 0.09}px;
+}
+.pokemon-list th{
+    color: $grayText;
+    font-size: 1.1rem;
+}
+.pokemon-list td{
+    font-size: 1.1rem;
+}
+.pokemon-list-image{
+    // background-color: blue;
+    border-radius: 50%;
+    width: #{$screenWidth * 0.115}px;
+    // margin-left: #{$screenWidth * 0.04}px;
+}
+.pokemon-list::-webkit-scrollbar {
+    width: 3px !important;
+}
+.pokemon-list:hover::-webkit-scrollbar {
+    width: 8px !important;
+}
+
+
+// ### SINGLE STYLE CLASSES ###
+
+.row{
+    display: flex;
+    flex-flow: row nowrap;
+}
+.column{
+    display: flex;
+    flex-flow: column nowrap;
+}
+.grow{
+    flex: 1;
+}
+.align-center{
+    align-items: center;
+}
+.align-self-center{
+    align-self: center;
+}
+.align-stretch{
+    align-items: stretch;
+}
+.justify-center{
+    justify-content: center;
+}
+.justify-between{
+    justify-content: space-between;
+}
+.justify-end{
+    justify-content: flex-end;
+}
+.cursor-pointer{
+    cursor: pointer;
+}
+.block{
+    display: block;
+}
