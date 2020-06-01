@@ -4,8 +4,9 @@
         "es6": true
     },
     "extends": [
-        "plugin:react/recommended",
-        "airbnb"
+        "airbnb",
+        "plugin:prettier/recommended",
+        "plugin:react/recommended"
     ],
     "globals": {
         "Atomics": "readonly",
@@ -22,5 +23,8 @@
         "react"
     ],
     "rules": {
+        "react/prop-types": [0],
+        "react/jsx-props-no-spreading": [0],
+        "react/jsx-wrap-multilines": [0]
     }
 }
