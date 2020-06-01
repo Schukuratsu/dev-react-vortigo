@@ -1,6 +1,5 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-// eslint-disable-next-line no-unused-vars
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { toastr } from "react-redux-toastr";
 import { setName } from "../../actions/trainerActions";
@@ -26,16 +25,16 @@ function TranerName() {
     }
   };
 
-  // // will redirect to Home on page reload
-  // const fromHome = useSelector((store) => store.appState.fromHome, shallowEqual);
-  // React.useEffect(
-  //   () => {
-  //     if (!fromHome) {
-  //       history.push('/');
-  //     }
-  //   },
-  //   [],
-  // );
+  // will redirect to Home on page reload
+  const fromHome = useSelector(
+    (store) => store.appState.fromHome,
+    shallowEqual
+  );
+  React.useEffect(() => {
+    if (!fromHome) {
+      history.push("/");
+    }
+  }, []);
 
   return (
     <div className="page bg-image column">

@@ -38,16 +38,16 @@ function TranerName() {
     shallowEqual
   );
 
-  // // will redirect to Home on page reload
-  // const fromHome = useSelector((store) => store.appState.fromHome, shallowEqual);
-  // React.useEffect(
-  //   () => {
-  //     if (!fromHome) {
-  //       history.push('/');
-  //     }
-  //   },
-  //   [],
-  // );
+  // will redirect to Home on page reload
+  const fromHome = useSelector(
+    (store) => store.appState.fromHome,
+    shallowEqual
+  );
+  React.useEffect(() => {
+    if (!fromHome) {
+      history.push("/");
+    }
+  }, []);
 
   return (
     <div className="page bg-image column">
