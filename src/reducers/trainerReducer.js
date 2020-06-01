@@ -1,8 +1,8 @@
-import * as actions from '../components/actions/actionTypes';
+import * as actions from "../actions/actionTypes";
 
 const defaultState = {
-  name: '',
-  favoritePokemonType: '',
+  name: "",
+  favoritePokemonType: "",
 };
 
 const trainer = (state = defaultState, action) => {
