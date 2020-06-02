@@ -234,6 +234,7 @@ $grayText: #929292;
     // overflow-y: overlay !important;
     // padding-right: 8px !important;
     overflow-y: scroll !important;
+    width: #{$screenWidth-8}px;
 }
 .pokemon-list table{
     text-align: center;
