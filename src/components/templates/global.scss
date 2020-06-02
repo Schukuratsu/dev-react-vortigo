@@ -78,6 +78,7 @@ $grayText: #929292;
     border-color: white !important;
     color: white !important;
     font-size: 1.3rem !important;
+    width: unset !important;
 }
 .name-input.ant-input:hover, .name-input.ant-input:focus{
     border-right-width: 0px !important;
@@ -200,10 +201,11 @@ $grayText: #929292;
 // TypeScroller component
 .type-scroller{
     width: #{$screenWidth}px !important;
-    overflow-x: overlay !important;
+    // overflow-x: overlay !important;
+    // padding-bottom: 8px;
+    overflow-x: scroll !important;
     min-height: fit-content !important;
     padding-left: #{$screenWidth * 0.05}px;
-    padding-bottom: 8px;
 }
 .type-scroller-item{
     margin-right: #{$screenWidth * 0.05}px;
@@ -216,23 +218,22 @@ $grayText: #929292;
     font-weight: bold;
     text-transform: capitalize;
 }
-.type-scroller::-webkit-scrollbar {
-    height: 0px !important;
-
-}
-.type-scroller:hover::-webkit-scrollbar {
-    height: 8px !important;
-}
+// .type-scroller::-webkit-scrollbar {
+//     height: 0px !important;
+// }
+// .type-scroller:hover::-webkit-scrollbar {
+//     height: 8px !important;
+// }
 .type-scroller-position{
     width: #{$screenWidth}px !important;
-    overflow-x: overlay !important;
     padding-top: #{$screenWidth * 0.07}px;
 }
 
 // TypeScroller component
 .pokemon-list{
-    overflow-y: overlay !important;
-    padding-right: 8px !important;
+    // overflow-y: overlay !important;
+    // padding-right: 8px !important;
+    overflow-y: scroll !important;
 }
 .pokemon-list table{
     text-align: center;
@@ -250,12 +251,12 @@ $grayText: #929292;
     border-radius: 50%;
     width: #{$screenWidth * 0.115}px;
 }
-.pokemon-list::-webkit-scrollbar {
-    width: 3px !important;
-}
-.pokemon-list:hover::-webkit-scrollbar {
-    width: 8px !important;
-}
+// .pokemon-list::-webkit-scrollbar {
+//     width: 3px !important;
+// }
+// .pokemon-list:hover::-webkit-scrollbar {
+//     width: 8px !important;
+// }
 
 
 // ### SINGLE STYLE CLASSES ###

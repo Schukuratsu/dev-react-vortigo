@@ -8,7 +8,6 @@ import Pokedex from "./components/pages/Pokedex";
 function Routes() {
   return (
     <Switch>
-      <Route exact path="/" component={Home} />
       <Route exact path="/trainer-name" component={TrainerName} />
       <Route
         exact
@@ -16,6 +15,7 @@ function Routes() {
         component={FavoritePokemonType}
       />
       <Route exact path="/pokedex" component={Pokedex} />
+      <Route path="/" component={Home} />
     </Switch>
   );
 }
