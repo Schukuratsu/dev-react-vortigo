@@ -1,8 +1,8 @@
 import * as actions from "./actionTypes";
 
-export function setName(name) {
-  return { type: actions.SET_NAME, payload: name };
+export function saveName(name) {
+  return { type: actions.SAVE_NAME, payload: name };
 }
-export function setFavoritePokemonType(favoriteType) {
-  return { type: actions.SET_FAVORITE_TYPE, payload: favoriteType };
+export function saveFavoritePokemonType(favoriteType) {
+  return { type: actions.SAVE_FAVORITE_TYPE, payload: favoriteType };
 }

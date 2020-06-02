@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setFromHome } from "../../actions/appActions";
+import { saveFromHome } from "../../actions/appActions";
 import TitleImage from "../common/TitleImage";
 import LargeButton from "../common/LargeButton";
 
@@ -10,7 +10,7 @@ function Home() {
   const dispatch = useDispatch();
 
   const goToTrainerName = () => {
-    dispatch(setFromHome());
+    dispatch(saveFromHome());
     history.push("/trainer-name");
   };
 

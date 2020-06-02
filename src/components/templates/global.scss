@@ -113,10 +113,8 @@ $grayText: #929292;
 
 // TypeSelectModal component
 .type-select-modal{
-    text-transform: capitalize;
 }
 .type-select-modal-position{
-    // position: absolute !important;
     top: unset !important;
     display: flex;
     flex-flow: column nowrap;
@@ -124,6 +122,16 @@ $grayText: #929292;
     padding-bottom: #{$screenWidth * 0.01}px !important;
     width: #{$screenWidth*0.98}px !important;
     height: #{$screenHeight}px !important;
+}
+.type-select-modal-list .ant-list-items{
+    margin-right: -#{$screenWidth * 0.02}px !important;
+}
+.type-select-modal-list-item{
+    padding: 12px 0 !important;
+}
+.type-select-modal-image{
+    // position: absolute !important;
+    width: #{$screenWidth*0.12}px !important;
 }
 .ant-modal-footer button + button{
     margin-left: 0px !important;
@@ -185,8 +193,8 @@ $grayText: #929292;
 .search-bar .ant-input-search{
     height: #{$screenHeight * 0.07}px !important;
 }
-.search-bar .ant-input-search, .search-bar .ant-input{
-    background-color: #f0f0f0;
+.search-bar-input, .search-bar-input .ant-input{
+    background-color: #f0f0f0 !important;
 }
 
 // TypeScroller component
@@ -283,4 +291,10 @@ $grayText: #929292;
 }
 .cursor-pointer{
     cursor: pointer;
+}
+.sentence-case{
+  text-transform: lowercase !important;
+  &:first-letter {
+    text-transform: uppercase !important;
+  }
 }

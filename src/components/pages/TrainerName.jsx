@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { toastr } from "react-redux-toastr";
-import { setName } from "../../actions/trainerActions";
+import { saveName } from "../../actions/trainerActions";
 import QuestionText from "../common/QuestionText";
 import PhraseText from "../common/PhraseText";
 import NameInput from "../common/NameInput";
@@ -18,7 +18,7 @@ function TranerName() {
 
   const onClickNext = () => {
     if (trainerName) {
-      dispatch(setName(trainerName));
+      dispatch(saveName(trainerName));
       history.push("/favorite-pokemon-type");
     } else {
       toastr.error("Trainer name can't be empty.");

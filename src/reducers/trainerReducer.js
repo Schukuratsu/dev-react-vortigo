@@ -7,12 +7,12 @@ const defaultState = {
 
 const trainer = (state = defaultState, action) => {
   switch (action.type) {
-    case actions.SET_NAME:
+    case actions.SAVE_NAME:
       return {
         ...state,
         name: action.payload,
       };
-    case actions.SET_FAVORITE_TYPE:
+    case actions.SAVE_FAVORITE_TYPE:
       return {
         ...state,
         favoritePokemonType: action.payload,

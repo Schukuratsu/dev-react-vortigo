@@ -1,112 +1,14 @@
 import React from "react";
-import { Modal, List } from "antd";
+import { Modal, List, Space, Typography } from "antd";
 import radioOffIcon from "../../assets/radio-off.png";
 import radioOnIcon from "../../assets/radio-on.png";
 import closeIcon from "../../assets/close.png";
 
 // import pokemonTypeApi from "../../api/pokemonTypeApi";
 
-function PhraseText({ onChange, value, className = "", ...props }) {
-  // eslint-disable-next-line no-unused-vars
-  const [typeList, setTypeList] = React.useState([
-    {
-      thumbnailImage:
-        "https://vortigo.blob.core.windows.net/files/pokemon/assets/normal.png",
-      name: "normal",
-    },
-    {
-      thumbnailImage:
-        "https://vortigo.blob.core.windows.net/files/pokemon/assets/fighting.png",
-      name: "fighting",
-    },
-    {
-      thumbnailImage:
-        "https://vortigo.blob.core.windows.net/files/pokemon/assets/flying.png",
-      name: "flying",
-    },
-    {
-      thumbnailImage:
-        "https://vortigo.blob.core.windows.net/files/pokemon/assets/poison.png",
-      name: "poison",
-    },
-    {
-      thumbnailImage:
-        "https://vortigo.blob.core.windows.net/files/pokemon/assets/ground.png",
-      name: "ground",
-    },
-    {
-      thumbnailImage:
-        "https://vortigo.blob.core.windows.net/files/pokemon/assets/rock.png",
-      name: "rock",
-    },
-    {
-      thumbnailImage:
-        "https://vortigo.blob.core.windows.net/files/pokemon/assets/normal.png",
-      name: "normal",
-    },
-    {
-      thumbnailImage:
-        "https://vortigo.blob.core.windows.net/files/pokemon/assets/fighting.png",
-      name: "fighting",
-    },
-    {
-      thumbnailImage:
-        "https://vortigo.blob.core.windows.net/files/pokemon/assets/flying.png",
-      name: "flying",
-    },
-    {
-      thumbnailImage:
-        "https://vortigo.blob.core.windows.net/files/pokemon/assets/poison.png",
-      name: "poison",
-    },
-    {
-      thumbnailImage:
-        "https://vortigo.blob.core.windows.net/files/pokemon/assets/ground.png",
-      name: "ground",
-    },
-    {
-      thumbnailImage:
-        "https://vortigo.blob.core.windows.net/files/pokemon/assets/rock.png",
-      name: "rock",
-    },
-    {
-      thumbnailImage:
-        "https://vortigo.blob.core.windows.net/files/pokemon/assets/normal.png",
-      name: "normal",
-    },
-    {
-      thumbnailImage:
-        "https://vortigo.blob.core.windows.net/files/pokemon/assets/fighting.png",
-      name: "fighting",
-    },
-    {
-      thumbnailImage:
-        "https://vortigo.blob.core.windows.net/files/pokemon/assets/flying.png",
-      name: "flying",
-    },
-    {
-      thumbnailImage:
-        "https://vortigo.blob.core.windows.net/files/pokemon/assets/poison.png",
-      name: "poison",
-    },
-    {
-      thumbnailImage:
-        "https://vortigo.blob.core.windows.net/files/pokemon/assets/ground.png",
-      name: "ground",
-    },
-    {
-      thumbnailImage:
-        "https://vortigo.blob.core.windows.net/files/pokemon/assets/rock.png",
-      name: "rock",
-    },
-  ]);
-
+function PhraseText({ onChange, value, options, className = "", ...props }) {
+  const { onCancel } = props;
   const [selectedValue, setSelectedValue] = React.useState(value);
-
-  // React.useEffect(
-  //   () => pokemonTypeApi.list().then((response) => setTypeList(response)),
-  //   []
-  // );
 
   React.useEffect(() => setSelectedValue(value), [value]);
 
@@ -133,19 +35,25 @@ function PhraseText({ onChange, value, className = "", ...props }) {
       <List
         className="type-select-modal-list"
         itemLayout="horizontal"
-        dataSource={typeList}
+        dataSource={options}
         size="large"
         header={
           <div className="row justify-between align-center">
             <div>Select your favorite pokémon type</div>
-            <img src={closeIcon} alt="close" />
+            {/* eslint-disable-next-line */}
+            <img
+              className="cursor-pointer"
+              onClick={onCancel}
+              src={closeIcon}
+              alt="close"
+            />
           </div>
         }
         renderItem={(item) => (
           <List.Item
+            className="type-select-modal-list-item"
             key={item.name}
             actions={[
-              // eslint-disable-next-line
               <img
                 key={`${item.name}-checkbox`}
                 src={item.name === selectedValue ? radioOnIcon : radioOffIcon}
@@ -155,8 +63,14 @@ function PhraseText({ onChange, value, className = "", ...props }) {
               />,
             ]}
           >
-            <img src={item.thumbnailImage} alt={item.name} />
-            {item.name}
+            <Space>
+              <img
+                src={item.thumbnailImage}
+                alt={item.name}
+                className="type-select-modal-image"
+              />
+              <Typography className="sentence-case">{item.name}</Typography>
+            </Space>
           </List.Item>
         )}
       />

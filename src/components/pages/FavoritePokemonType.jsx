@@ -2,7 +2,9 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { toastr } from "react-redux-toastr";
-import { setFavoritePokemonType } from "../../actions/trainerActions";
+import { saveFavoritePokemonType } from "../../actions/trainerActions";
+import { savePokemonTypes } from "../../actions/appActions";
+import pokemonTypeApi from "../../api/pokemonType";
 import BackIconButton from "../common/BackIconButton";
 import QuestionText from "../common/QuestionText";
 import PhraseText from "../common/PhraseText";
@@ -15,6 +17,9 @@ function TranerName() {
   const dispatch = useDispatch();
 
   const [pokemonType, setPokemonType] = React.useState("");
+  const [pokemonTypes, setPokemonTypes] = React.useState(
+    useSelector((store) => store.appState.pokemonTypes)
+  );
   const [modalIsVisible, setModalIsVisible] = React.useState(false);
 
   const openModal = () => setModalIsVisible(true);
@@ -22,7 +27,7 @@ function TranerName() {
 
   const onClickNext = () => {
     if (pokemonType) {
-      dispatch(setFavoritePokemonType(pokemonType));
+      dispatch(saveFavoritePokemonType(pokemonType));
       history.push("/pokedex");
     } else {
       toastr.error("Select a Pokémon type.");
@@ -46,6 +51,28 @@ function TranerName() {
   React.useEffect(() => {
     if (!fromHome) {
       history.push("/");
+    }
+  }, []);
+
+  // loads pokemon types from api
+  React.useEffect(() => {
+    if (!pokemonTypes[0]) {
+      pokemonTypeApi.list().then((response) => {
+        const context = document.createElement("canvas").getContext("2d");
+        response.map((type) => {
+          const myImg = new Image();
+          myImg.src = response.thumbnailImage;
+          context.drawImage(myImg, 0, 0);
+          const colors = [
+            context.getImageData(0, 0, 1, 1).data,
+            context.getImageData(49, 49, 1, 1).data,
+          ];
+          console.log(colors);
+        });
+        dispatch(savePokemonTypes(response));
+        setPokemonTypes(response);
+        console.log(response);
+      });
     }
   }, []);
 
@@ -74,6 +101,7 @@ function TranerName() {
           visible={modalIsVisible}
           onChange={setPokemonType}
           value={pokemonType}
+          options={pokemonTypes}
           className="type-select-modal-position"
         />
         <div className="column grow align-center justify-end">

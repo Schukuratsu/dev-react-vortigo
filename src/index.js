@@ -22,7 +22,7 @@ ReactDOM.render(
       newestOnTop={false}
       preventDuplicates
       position="bottom-left"
-      getState={(state) => state.toastrState} // This is the default
+      getState={(state) => state.toastrState}
       transitionIn="fadeIn"
       transitionOut="fadeOut"
       progressBar
